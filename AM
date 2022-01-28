@@ -1,0 +1,421 @@
+"""
+Creator: Kenneth Thomas
+Course: Data Science - Python; Hult MBAN 2022
+Submission: 2022-01-28
+
+DocString:
+###    A) Introduction    ####
+Welcome to NYC in the late '80s! Even though everyone is making money, you
+find yourself at the top of the food chain, you're an investment banker at 
+Wall Street firm Pierce & Pierce.
+
+We open within a nondescript, yet sophisticated, board room. Your colleagues 
+are comparing business cards and you can't help but notice that Paul Owen's 
+card has stopped one in their tracks, a one Patrick Bateman.
+
+We enter the business card scene of Bret Easton Ellis' American Psycho.
+
+###    B) Stage    ####
+1. Pierce & Pierce Conference Room
+2. Dorsia
+3. Bateman Apt
+4. Win (Win Stage)
+5. What a waste (loss)
+
+###    C) Known Bugs and/or Errors    ####
+1. None
+"""
+
+from sys import exit ## Triggers Endgame ##
+import random ## While Loop ##
+name = ""
+cut = ""
+dodge = 3
+
+def start(): ## starts game, enter stage 1 ##
+    print( """
+*Patrick Bateman drops Paul Owen's card, visibly shaking.*
+            
+Luis Carruthers: Is something wrong? Patrick...you're sweating. 
+            
+Narrator: Sitting off at the end of the table, you notice the tension in the air is
+          palpable. Fortune favors the bold, why not cut the tension?
+                
+          You're sharp after all.
+            
+            """)
+    input(prompt = "<Let's paint the town red, go ahead an press enter.>")
+    print(" ")
+    conference_room()
+
+def conference_room():
+    global name # allows name variable to work outside of the conference_room udf
+    name = input(prompt = "No fly on the wall is without a name, what's yours?") ## Dynamic variable for name input ##
+    print("")
+    
+    print(f"""
+Narrator: Alright, {name.title()}. There's sweat, quiet, and general 
+          boredom in the air. Let's break of the monotony, what do you say?
+          
+          1) *Ahem* I'd like to throw my card into the mix here.
+          2) Seems like Bateman realized toilet paper isn't the best for cards.
+          3) *Say nothing.*
+          """)
+    
+    choice = input("> /n")
+    
+    if "1" in choice or "throw" in choice or "my card" in choice:
+        print("""
+Bateman: Last I heard you couldn't even get Friday night
+         reservations at Dorsia. I'm sure your card is just as interesting
+         as your influence.
+              
+         Speaking of Dorsia, have we made dinner reservations tonight?
+         I'll book, don't worry.
+              """)
+        input(prompt = "<Seems like you've hit a nerve. Press Enter to continue>/n")
+        dorsia()
+        
+    elif "2" in choice or "bateman" in choice.lower() or "best" in choice.lower():
+        print("""
+Bateman: Well, unlike you, I can get last minute reservations
+         at Dorsia. Which actually sounds like a good idea.
+                
+         I'll book Dorsia tonight, my treat.
+                
+         *Bateman cracks a wide smile*
+              """)
+        input(prompt = "<Seems like you've hit a nerve. Press Enter to continue>/n")
+        dorsia()
+    
+    elif "3" in choice or "nothing" in choice.lower():
+        print("""
+Narrator: Well thanks for playing. In saying nothing, you've gotten 
+          everything you have coming to you. Which is, of course, nothing.
+              """)
+        what_a_waste()
+        exit()
+        
+    else:
+        print("""
+Narrator: Well you clearly didn't make it into this firm on your ability
+          to follow direction.
+                
+          However, we're magnanimous. Try again.
+              """)
+    conference_room()
+        
+def dorsia(): ## Delving deeper into Bateman story and Yuppie-ism ##
+    global cut
+    print("""
+Narrator: Bateman wasn't lying. It's 7:30pm on a Friday and he got the best
+          seats in the house. There still seems to be a bit of tension,
+          however, but it's opaque.
+            
+          Bateman is going on about Whitney Houston's debut LP having 4
+          number one singles...it's about time to cut the noise.
+          """)
+    
+    input(prompt = "<Press Enter to continue>")
+        
+    
+    cut = input(prompt = """
+         1. So, Bateman, wanted to thank you for the invitation.
+         2. Unfortunately, I'm not a big music listener.
+         3. *Stare at the menu.*
+                         """)
+    if "1" in cut or "thank" in cut.lower() or "invitation" in cut.lower():
+        print(f"""
+Bateman: No problem, {name.title()}. We should strive to
+         better understand our business partners. Say, can I see your
+         business card?
+               """)
+        card = input(prompt = """
+Narrator: Simple enough request, but we always have choices in life.
+                  
+          1. Let's not do the same thing twice in one day, Bateman, life isn't that dull.
+          2. Eh, I was just looking to break the silence, my card isn't worth looking at.
+                              """)
+        
+        if "1" in card or "same" in card.lower() or "twice" in card.lower() or "dull" in card.lower() or "boring" in card.lower():
+            print(f"""
+Bateman: You're right, {name.title()}. 
+         Let's do something more exciting. After dinner, let's get drinks at my place.
+         Over looking the park, I have a pretty decent music collection too.
+                  """)
+            input("<press enter to continue.>")
+            bateman_apt()
+            
+        else: ## In the story, disjointed conversation is common as as each character lacks in depth, they make up in platitudes ##
+            print("""
+Bateman: I doubt that to be true, however, I'll take your word for it. 
+         However, something that is worth looking at is my music collection.
+         I recently picked up a Huey Lewis and The News album.
+         Let's have some drinks and listen over at my place after dinner.
+                  """)
+            input("<press enter to continue.>/n")
+            bateman_apt()
+
+    elif "2" in cut or "thank" in cut.lower() or "invitation" in cut.lower():
+        print(f"""
+Bateman: That's just because you haven't heard the right music, {name.title()}!
+         I have Huey Lewis and The News on cassette. Let's take a listen at my place after dinner.
+               """)
+        input("<press enter to continue.>/n")
+        bateman_apt()
+            
+    elif "whitney houston" in cut.lower() or "whitney" in cut.lower() or "houston" in cut.lower():
+        print(f"""
+Bateman: It's hard to choose a favorite among so many great tracks, 
+         but "The Greatest Love of All" is one of the best, most powerful songs ever written about self-preservation, dignity.
+         Its universal message crosses all boundaries and instills one with the hope that it's not too late to better ourselves.
+         Since, {name.title()}, it's impossible in this world we live in to empathize with others, we can always empathize with ourselves.
+         It's an important message, crucial really. And it's beautifully stated on the album.
+              
+         https://open.spotify.com/album/2MH37enG6IPvNK5QFLyKes?si=aSzKG3uSS6aRTOv10euArA
+              """)
+        input("<press enter to continue.>/n")
+        dorsia()
+        
+    elif "3" in cut or "menu" in cut.lower() or "food" in cut.lower() or "stare" in cut.lower() or "look" in cut.lower():
+        print("""
+Narrator: In this world boredom kills, that makes you two a statistic.
+          Statistics can't play games, so let's call it here.
+              """)
+        input("<press enter to continue.>")
+        what_a_waste()
+        
+    else:
+        print("""
+Narrator: You should just listen to the Whitney Houston album, that would probably be faster than this.
+          Try interjecting with somehting interesting.
+              """)
+        input("<press enter to continue.>/n")
+        dorsia()
+        
+def bateman_apt(): ## We enter the final stage ##
+    print(f"""
+         *'Hip to be a Square' by Huey Lewis and The News plays in the background*
+          
+Bateman: So what do you think, {name.title()}?
+          """)
+    thoughts = input(prompt = """
+Narrator: So, what do you think?
+                              
+          1. It's alright, I guess.
+          2. With alcohol, it's bearable.
+          3. Bateman, what is this, seriously?
+          4. Is that a raincoat?
+                              """)
+    if "1" in thoughts or "alright" in cut.lower() or "invitation" in cut.lower():
+        print("""
+Bateman: Their early work was a little too new wave for my taste. 
+         But when Sports came out in '83, I think they really came into their own, commercially and artistically. 
+         The whole album has a clear, crisp sound, and a new sheen of consummate professionalism that really gives the songs a big boost. 
+         He's been compared to Elvis Costello, but I think Huey has a far more bitter, cynical sense of humor.
+              
+         *Bateman walks over to a large cabinet in the kitchen*
+              """)
+        input("<Press enter to continue>/n")
+    
+    elif "2" in thoughts or "alcohol" in cut.lower() or "invitation" in cut.lower():
+        print("""
+Narrator: You accidentally spill some of your drink, noticing an audible crinkle.
+          Are those copies of the Style section?
+                        
+          *You look to Bateman who's made his way to a large cabinet in the kitchen*
+              """)
+        input("<Press enter to continue>/n")
+        
+    elif "huey lewis" in thoughts.lower() or "hip to be a square" in cut.lower() or "huey lewis and the news" in cut.lower() or "the news" in cut.lower():
+        print("""
+Bateman: In '87, Huey released this; Fore!, their most accomplished album. 
+         I think their undisputed masterpiece is "Hip To Be Square". 
+         A song so catchy, most people probably don't listen to the lyrics.
+         But they should, because it's not just about the pleasures of conformity and the importance of trends. 
+         It's also a personal statement about the band itself. 
+        
+         https://open.spotify.com/album/5L0vaNLbzgP8RIJqs1zamE?si=5wQg6bE_Qyuh-Sa6oOe-Xw
+              """)
+        input("<press enter to continue.>/n")
+        bateman_apt()
+        
+    elif "3" in thoughts or "bateman" in cut.lower() or "seriously" in cut.lower():
+        print(f"""
+Bateman: That's alright, {name.title()}.
+         I think Huey's cynicial sense of humor can be a bit too bitter for some.
+         Can I get you another drink?
+              
+         *Bateman makes his way over to the kitchen*
+               """)
+        input("<press enter to continue.>/n")
+        
+    elif "4" in thoughts or "raincoat" in cut.lower():
+        print("""
+Bateman: Yes, it is.
+              
+         *Bateman dances over to a large cabinet in the kitchen*
+              """)
+        input("<Press enter to continue>/n")
+    
+    else:
+        print("""
+Narrator: Conversations is a two-person sport. You should answer the question.  
+              """)
+        input("<Press enter to continue>/n")
+        bateman_apt()
+        
+    print(f"""
+Bateman: Hey, {name.title()}!
+          
+         *You turn around to see Bateman brandishing an axe, ready to swing, you need to get to the door*
+           """)
+    input("<Press enter to continue>/n")
+    
+    attack_seq = ['*Bateman swings down*',
+                  '*Bateman swings left*',
+                  '*Bateman swings right*',
+                  '*Bateman sweeps your legs*',]
+    dodges = 3
+    
+    while dodges > 0:
+        dodge = random.choice(attack_seq)
+        input("<Press enter to see the coming attack>\n")
+        print(dodge)
+
+        
+        if dodge == attack_seq[0]:
+            print("""
+Narrator: Time to dodge!
+                
+          1. Duck to the right.
+          2. Jump.
+          3. Duck to the left.
+          4. Jump to the side.
+                  """)
+            dodges -=1
+            action = input("> /n")
+            
+            if "4" in action or "side" in action.lower():
+                print("""
+Narrator: Close call, is there another attack?
+                      """)
+                dodges -=1
+            
+            else:
+                print(f"""
+Narrator: A clean cut. better luck next time, {name.title()}.
+                       """)
+                input("<press enter to continue.>")
+                what_a_waste()
+        
+        elif dodges == attack_seq[1]:
+            print("""
+Narrator: Time to dodge!
+                
+          1. Jump.
+          2. Duck to the right.
+          3. Jump to the side.
+          4. Duck to the left.
+                  """)
+            dodges -=1
+            action = input("> /n")
+            
+            if "2" in action or "right" in action.lower():
+                print("""
+Narrator: Close call, is there another attack?
+                      """)
+                dodges -=1
+            
+            else:
+                print(f"""
+Narrator: A clean cut. better luck next time, {name.title()}.
+                       """)
+                input("<press enter to continue.>")
+                what_a_waste()
+            
+        elif dodges == attack_seq[2]:
+            print("""
+Narrator: Time to dodge!
+                
+          1. Duck to the right.
+          2. Jump to the side.
+          3. Duck to the left.
+          4. Jump.
+                  """)
+            dodges -=1
+            action = input("> /n")
+            
+            if "3" in action or "left" in action.lower():
+                print("""
+Narrator: Close call, is there another attack?
+                      """)
+                dodges -=1
+            
+            else:
+                print(f"""
+Narrator: A clean cut. better luck next time, {name.title()}.
+                       """)
+                input("<press enter to continue.>/n")
+                what_a_waste()
+            
+        elif dodges == attack_seq[3]:
+            print("""
+Narrator: Time to dodge!
+                
+          1. Duck to the right.
+          2. Jump to the side.
+          3. Jump.
+          4. Duck to the left.
+                  """)
+            dodges -=1
+            action = input("> /n") 
+            
+            if "3" in action or "jump" in action.lower():
+                print("""
+Narrator: Close call, is there another attack?
+                      """)
+                dodges -=1
+            
+            else:
+                print(f"""
+Narrator: A clean cut. better luck next time, {name.title()}.
+                       """)
+                input("<press enter to continue.>/n")
+                what_a_waste()
+        break
+
+        print(f"""
+Narrator: That was a close call, {name.title()}.
+          You've made it to the door and made your escape.
+          It's probably best to alert the police.
+               """)
+        win()
+        
+def win(): # Win Stage #
+    print(f"""
+Narrator: Congratulations, {name.title()}. I'm sure you were
+          probably expecting something a little less anti-climactic.
+          However, survival can be considered a victory in it's own right.
+                     
+          There are some Easter eggs lying around, try to play again and find them.
+           """)
+    input("<Press enter to continue>/n")
+    exit(0)
+    
+def what_a_waste(): ## Loss Stage ##
+    print(f"""
+Bateman: Would love to say good showing, but that would make a liar
+         out of me. Anyway, {name.title()}, I have to return some
+         videotapes.
+    
+         I'll catch you later.
+        """)
+    input("<Press enter to continue>/n")
+    exit(0)
+
+            ### Easter Eggs ###
+    ## 1. Dorsia, first prompt - "Whitney Houston" ##
+    ## 2. Bateman Apartment, first prmopt - "Huey Lewis and the news" ##
+    
+start()
